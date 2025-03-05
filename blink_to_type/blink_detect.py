@@ -1,10 +1,12 @@
 # blink_detect.py
+from pathlib import Path
 import cv2
 import dlib
 import imutils
 from scipy.spatial import distance as dist
 from imutils import face_utils
 
+f = open(Path('assets/copypasta.txt'))
 
 # Calculate EyeAspect Ratio
 def calculate_EAR(eye):
@@ -23,7 +25,7 @@ def calculate_EAR(eye):
 
 # Constants
 BLINK_THRESH = 0.45
-SUCC_FRAME = 2
+SUCC_FRAME = 1
 count_frame = 0
 
 # Eye landmarks
@@ -66,16 +68,22 @@ while True:
 
 		# get average of left and right eye EAR
 		avg = (left_EAR+right_EAR)/2
-		print(left_EAR, right_EAR, avg)
 		if avg < BLINK_THRESH:
 			count_frame += 1  # increment frame count
 		else:
 			if count_frame >= SUCC_FRAME:
-				cv2.putText(
-					frame, 'Blink Detected', (30, 30),
-					cv2.FONT_HERSHEY_DUPLEX, 1,
-					(0, 200, 0), 1
-				)
+				# currently true while eyes are open after a blink TODO
+				# Perform logic when blink is detected
+				print(f.read(5), end='', flush=True)
+				# must set flush=True to avoid problems with
+				# buffering, but might not be necessary when
+				# typer function is used for animation
+#				cv2.putText(
+#					frame, 'Blink Detected', (30, 30),
+#					cv2.FONT_HERSHEY_DUPLEX, 1,
+#					(0, 200, 0), 1
+#				)
+				count_frame = 0
 			else:
 				count_frame = 0
 
@@ -83,5 +91,6 @@ while True:
 	if cv2.waitKey(1) & 0xFF == ord('q'): 
 		break
 
+f.close()
 cam.release() 
 cv2.destroyAllWindows()
