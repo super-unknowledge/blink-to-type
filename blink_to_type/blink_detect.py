@@ -6,6 +6,9 @@ import imutils
 from scipy.spatial import distance as dist
 from imutils import face_utils
 
+from typer import typingPrint
+
+
 f = open(Path('assets/copypasta.txt'))
 
 # Calculate EyeAspect Ratio
@@ -72,9 +75,8 @@ while True:
 			count_frame += 1  # increment frame count
 		else:
 			if count_frame >= SUCC_FRAME:
-				# currently true while eyes are open after a blink TODO
 				# Perform logic when blink is detected
-				print(f.read(5), end='', flush=True)
+				typingPrint(f.read(5))
 				# must set flush=True to avoid problems with
 				# buffering, but might not be necessary when
 				# typer function is used for animation
@@ -83,7 +85,9 @@ while True:
 #					cv2.FONT_HERSHEY_DUPLEX, 1,
 #					(0, 200, 0), 1
 #				)
-				count_frame = 0
+				# must reset to zero or else it 
+				# will fire nonstop
+				count_frame = 0 
 			else:
 				count_frame = 0
 
