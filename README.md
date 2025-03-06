@@ -14,9 +14,8 @@ Blink to type from a file using OpenCV.
 6. optional: add typing velocity feature
 7. optional: deploy online demo
 8. *rewrite code so that input txt file can be passed in as argument with a flag*
-9. *change after making requirements.txt*
-10. *change after making requirements.txt*
-11. add machine specs
+~~9. *change after making requirements.txt*~~
+10. add machine specs
 
 ## Installation
 Requirements:
@@ -26,7 +25,10 @@ Install required packages
 ```
 pip install opencv-python numpy dlib imutils
 ```
-
+or install from `requirements.txt`
+```
+pip install -r requirements.txt
+```
 Create `Models` directory and download required dlib model
 ```
 cd blink_to_type
