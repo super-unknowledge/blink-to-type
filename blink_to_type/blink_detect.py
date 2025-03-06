@@ -38,7 +38,7 @@ count_frame = 0
 # Initialize the models for landmark and face detection
 detector = dlib.get_frontal_face_detector()
 landmark_predict = dlib.shape_predictor(
-	'Model/shape_predictor_68_face_landmarks.dat'
+	'Models/shape_predictor_68_face_landmarks.dat'
 )
 
 # Capture webcam video
