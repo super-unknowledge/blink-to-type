@@ -7,7 +7,7 @@ Blink to type from a file using OpenCV.
 	- change names that feel weird
 	- slightly better documentation
 2. fix relative paths so code can be run from outermost directory
-3. write installation guide
+~~3. write installation guide~~
 4. write a fun lil write up
 	- eventually a blog post
 5. e-beg for a job
